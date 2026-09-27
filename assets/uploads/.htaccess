@@ -1,0 +1,14 @@
+# Prevent directory listing
+Options -Indexes
+
+# Block execution of scripts
+<FilesMatch "\.(php|phtml|php3|php4|php5|php7|phps|cgi|pl|py|jsp|asp|aspx|sh|bat)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Ensure images and safe documents are accessible
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|pdf|doc|docx|xls|xlsx|ppt|pptx|txt|csv)$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>

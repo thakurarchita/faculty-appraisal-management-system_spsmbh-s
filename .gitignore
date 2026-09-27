@@ -1,0 +1,42 @@
+# Environment / secrets
+.env
+.env.*
+*.key
+*.pem
+
+# Local database
+database/*.db
+database/*.sqlite
+database/*.sqlite3
+database/*.zip
+
+# Email configuration containing credentials
+config/mail.php
+config/mail_debug.php
+config/mail_test.php
+
+# Temporary development files
+scratch/
+
+# Composer dependencies
+vendor/
+
+# Local/test files
+test_base_url.php
+database/*.db-*
+
+# User-uploaded files
+assets/uploads/*
+!assets/uploads/.htaccess
+
+# Old database schema
+database/shema.sql
+database/cleanup.php
+
+# User-uploaded files
+assets/uploads/*
+!assets/uploads/.htaccess
+
+# Old database schema
+database/shema.sql
+database/cleanup.php

@@ -1,0 +1,390 @@
+/* =========================================================
+   College Appraisal System - College Coral & Burgundy Theme
+   ========================================================= */
+:root {
+    --college-navy: #c94d57;
+    --college-navy-dark: #8f2633;
+    --college-gold: #e58b91;
+    --college-gold-soft: #fff0f1;
+    --college-ink: #352b2c;
+    --college-paper: #faf7f7;
+    --college-primary: #c94d57;
+    --college-primary-dark: #8f2633;
+    --college-primary-soft: #fff0f1;
+    --primary: #c94d57 !important;
+    --primary-light: #e58b91 !important;
+    --primary-dark: #8f2633 !important;
+    --secondary: #e58b91 !important;
+    --dark: #8f2633 !important;
+    --dark-light: #c94d57 !important;
+    --bs-primary: #c94d57;
+    --bs-primary-rgb: 201, 77, 87;
+    --bs-link-color: #b83c47;
+    --bs-link-hover-color: #8f2633;
+}
+
+body {
+    background: var(--college-paper);
+    color: var(--college-ink);
+}
+
+/* Keep Bootstrap-based and custom authenticated pages on the logo palette. */
+.btn-primary,
+.btn-primary:focus,
+.btn-primary:active,
+.bg-primary,
+.progress-bar {
+    background-color: var(--college-primary) !important;
+    border-color: var(--college-primary) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--college-primary-dark) !important;
+    border-color: var(--college-primary-dark) !important;
+}
+
+.btn-outline-primary {
+    color: var(--college-primary) !important;
+    border-color: var(--college-primary) !important;
+}
+
+.btn-outline-primary:hover,
+.nav-pills .nav-link.active,
+.page-item.active .page-link {
+    color: #ffffff !important;
+    background-color: var(--college-primary) !important;
+    border-color: var(--college-primary) !important;
+}
+
+.text-primary,
+.page-link {
+    color: var(--college-primary) !important;
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:checked {
+    border-color: var(--college-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(201, 77, 87, 0.18) !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--college-primary) !important;
+}
+
+/* Sidebar styles */
+.sidebar {
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--college-navy-dark), var(--college-navy)) !important;
+    box-shadow: 2px 0 12px rgba(11, 32, 51, 0.18);
+}
+
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.75rem 1rem;
+    border-radius: 0.25rem;
+    margin: 0.25rem 0;
+    transition: all 0.3s;
+}
+
+.sidebar .nav-link:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .nav-link.active {
+    color: white;
+    background: rgba(214, 168, 79, 0.24);
+    border-left: 3px solid var(--college-gold);
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Card styles */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Guided Workflow Banner */
+.guided-banner {
+    background: linear-gradient(135deg, var(--college-navy-dark), var(--college-navy));
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.guided-steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.guided-step-item {
+    flex: 1;
+    min-width: 180px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 10px 14px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.guided-step-item:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.guided-step-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--college-gold);
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.guided-step-text strong {
+    display: block;
+    font-size: 13px;
+}
+
+.guided-step-text small {
+    font-size: 11px;
+    color: #cbd5e1;
+}
+
+/* Quick Action Cards */
+.quick-action-card {
+    border-radius: 12px;
+    padding: 18px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    text-decoration: none;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.25s ease;
+    height: 100%;
+}
+
+.quick-action-card:hover {
+    border-color: var(--college-gold);
+    box-shadow: 0 6px 20px rgba(214, 168, 79, 0.18);
+    transform: translateY(-3px);
+    color: #1e293b;
+}
+
+.quick-action-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.quick-action-icon.blue {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.quick-action-icon.purple {
+    background: #f5f3ff;
+    color: #7c3aed;
+}
+
+.quick-action-icon.emerald {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+.quick-action-icon.amber {
+    background: #fffbeb;
+    color: #d97706;
+}
+
+.quick-action-icon.rose {
+    background: #fff1f2;
+    color: #e11d48;
+}
+
+.quick-action-info strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.quick-action-info p {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Role Demo Switcher on Login Page */
+.demo-accounts {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 15px;
+}
+
+.demo-account-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.demo-chip {
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.demo-chip.admin {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border-color: #bfdbfe;
+}
+
+.demo-chip.principal {
+    background: #fffbeb;
+    color: #b45309;
+    border-color: #fde68a;
+}
+
+.demo-chip.faculty {
+    background: #f5f3ff;
+    color: #6d28d9;
+    border-color: #ddd6fe;
+}
+
+.demo-chip:hover {
+    transform: scale(1.03);
+    filter: brightness(0.95);
+}
+
+/* Workflow Stage Indicator */
+.workflow-stages {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.workflow-stage {
+    text-align: center;
+    flex: 1;
+    position: relative;
+    z-index: 2;
+}
+
+.stage-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 6px auto;
+    font-weight: 700;
+    font-size: 13px;
+    transition: all 0.3s;
+}
+
+.stage-label {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.workflow-stage.active .stage-dot {
+    background: #3b82f6;
+    color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+.workflow-stage.active .stage-label {
+    color: #1e293b;
+    font-weight: 700;
+}
+
+.workflow-stage.completed .stage-dot {
+    background: #10b981;
+    color: #ffffff;
+}
+
+/* DataTable customizations */
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    padding: 0.375rem 0.75rem;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border-radius: 6px !important;
+    margin: 0 2px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        min-height: auto;
+    }
+
+    .sidebar .nav-link {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .guided-steps {
+        flex-direction: column;
+    }
+
+    .guided-step-item {
+        width: 100%;
+    }
+}
+
+/* Fix for DataTables length select dropdown overlapping with chevron in Bootstrap 5 */
+div.dataTables_wrapper div.dataTables_length select.form-select {
+    padding-right: 2rem !important;
+    min-width: 75px;
+    background-position: right 0.5rem center;
+}

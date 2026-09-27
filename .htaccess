@@ -1,0 +1,86 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # ─── Set the subfolder base path ──────────────────────────────────────────
+    RewriteBase /appraisal/
+
+    # Allow existing static files and directories (assets, css, js, images)
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # ─── Block sensitive directories from web access ─────────────────────────
+    RewriteRule ^(database|scratch|config|middleware|vendor)(/.*)?$ - [F,L]
+
+    # ─── Auth & Root Routes ───────────────────────────────────────────────────
+    RewriteRule ^$                                 index.php [QSA,L]
+    RewriteRule ^login/?$                          index.php [QSA,L]
+    RewriteRule ^logout/?$                         logout.php [QSA,L]
+    RewriteRule ^forgot-password/?$                Views/auth/forgot-password.php [QSA,L]
+    RewriteRule ^reset-password/?$                 Views/auth/reset-password.php [QSA,L]
+
+    # ─── Admin Routes ─────────────────────────────────────────────────────────
+    RewriteRule ^admin/?$                          Views/admin/dashboard.php [QSA,L]
+    RewriteRule ^admin/dashboard/?$                Views/admin/dashboard.php [QSA,L]
+    RewriteRule ^admin/users/?$                    Views/admin/users.php [QSA,L]
+    RewriteRule ^admin/my-tasks/?$                 Views/admin/my_tasks.php [QSA,L]
+    RewriteRule ^admin/task-status/?$              Views/admin/task_status.php [QSA,L]
+    RewriteRule ^admin/templates/?$                Views/admin/templates.php [QSA,L]
+    RewriteRule ^admin/settings/?$                 Views/admin/settings.php [QSA,L]
+    RewriteRule ^admin/assign-task/?$              Views/principal/assign_task.php [QSA,L]
+
+    # ─── Faculty Routes ───────────────────────────────────────────────────────
+    RewriteRule ^faculty/?$                        Views/faculty/dashboard.php [QSA,L]
+    RewriteRule ^faculty/dashboard/?$              Views/faculty/dashboard.php [QSA,L]
+    RewriteRule ^faculty/tasks/?$                  Views/faculty/tasks.php [QSA,L]
+    RewriteRule ^faculty/profile/?$                Views/faculty/profile.php [QSA,L]
+
+    # ─── Principal Routes ─────────────────────────────────────────────────────
+    RewriteRule ^principal/?$                      Views/principal/dashboard.php [QSA,L]
+    RewriteRule ^principal/dashboard/?$            Views/principal/dashboard.php [QSA,L]
+    RewriteRule ^principal/evaluations/?$          Views/principal/evaluations.php [QSA,L]
+    RewriteRule ^principal/assign-task/?$          Views/principal/assign_task.php [QSA,L]
+    RewriteRule ^principal/settings/?$             Views/principal/settings.php [QSA,L]
+    RewriteRule ^principal/reports/?$              Views/principal/reports.php [QSA,L]
+    RewriteRule ^principal/pdf-marksheet/?$        Views/principal/pdf_marksheet.php [QSA,L]
+    RewriteRule ^principal/pdf-summary-marksheet/?$ Views/principal/pdf_summary_marksheet.php [QSA,L]
+    RewriteRule ^principal/task-status/?$          Views/admin/task_status.php [QSA,L]
+
+    # ─── API / Controller Routes ──────────────────────────────────────────────
+    RewriteRule ^api/auth/?$                       controllers/AuthController.php [QSA,L]
+    RewriteRule ^api/users/?$                      controllers/UserController.php [QSA,L]
+    RewriteRule ^api/tasks/?$                      controllers/TaskController.php [QSA,L]
+    RewriteRule ^api/admin-tasks/?$                controllers/AdminTaskController.php [QSA,L]
+    RewriteRule ^api/faculty-tasks/?$              controllers/FacultyTaskController.php [QSA,L]
+    RewriteRule ^api/principal/?$                  controllers/PrincipalController.php [QSA,L]
+    RewriteRule ^api/reports/?$                    controllers/ReportController.php [QSA,L]
+    RewriteRule ^api/settings/?$                   controllers/SettingsController.php [QSA,L]
+
+    # ─── Public Faculty Profile (slug-based) ─────────────────────────────────
+    RewriteRule ^faculty/([a-zA-Z0-9_-]+)/?$      index.php?_route=faculty_profile&slug=$1 [QSA,L]
+
+    # ─── Fallback ─────────────────────────────────────────────────────────────
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$                             index.php [QSA,L]
+</IfModule>
+
+# Default index file
+DirectoryIndex index.php
+
+# Prevent directory listing
+Options -Indexes
+
+# ─── Security Headers ─────────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ─── Block Sensitive Files ────────────────────────────────────────────────────
+<FilesMatch "\.(env|config|db|log|sql|sqlite|py|sh|bat)$">
+    Require all denied
+</FilesMatch>
